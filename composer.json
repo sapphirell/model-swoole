@@ -1,0 +1,14 @@
+{
+  "require": {
+    "monolog/monolog": "1.0.*",
+    "driehle/php-crypt-md5": "2.0.*@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "App/"
+    }
+  },
+  "require-dev": {
+    "eaglewu/swoole-ide-helper": "dev-master"
+  }
+}

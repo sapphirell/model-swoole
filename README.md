@@ -22,7 +22,7 @@
     $App = new Container('\App\Controller\\'.$userMessage['type']);
     $App->builder($userMessage['action'],$server,$frame,$userMessage);
 
-#db类使用方式
+# db类使用方式
      $server->model->table('test')
      ->select()
      ->where(['id'=>'1'])
@@ -31,7 +31,7 @@
            // var_dump($res);
      });
 
-#网站投递任务&使用swoole守护进程执行队列
+# 网站投递任务&使用swoole守护进程执行队列
     此处假定:用户在网站后台点击"限量抢拍商品a"。此时php后端响应用户的操作,并为数据类型为list,名为list的redis数据加值。
     例如:
         $task = json_encode(['class'=>'shopping','action'=>'goods','data'=>['time'=>12345678,'goods_id'=>23456,'user_id'=>233]]);

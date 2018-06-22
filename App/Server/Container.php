@@ -1,6 +1,6 @@
 <?php
 /***
- *  依赖注入容器
+ *  依赖注入容器,若要执行依赖注入,请确保类包含构造函数!
  */
 namespace App\Server;
 
@@ -17,7 +17,7 @@ class Container {
             echo $namespace;
         }
     }
-    public function builder($fn,$server,$frame,$userMessage)
+    public function builderController($fn,$server,$frame,$userMessage)
     {
         //从route中得到的control名称
         $this->reflection->getMethod($fn)->invoke
@@ -26,6 +26,14 @@ class Container {
             ,$server,$frame,$userMessage
         );
 
+    }
+    public function builderTask($fn,$server,$userMessage)
+    {
+        $this->reflection->getMethod($fn)->invoke
+        (
+            $this->autoBuilder()
+            ,$server,$userMessage
+        );
     }
     public function autoBuilder()
     {

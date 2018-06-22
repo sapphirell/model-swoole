@@ -12,7 +12,6 @@ class Cache
     public function __call($name, $arguments)
     {
         $fnExists = function_exists(strtolower($name));
-        var_dump($fnExists);
         if ($fnExists)
             //转换大小写后,本地方法存在则不走call
             return $this->{strtolower($name)}();
@@ -26,7 +25,7 @@ class Cache
 
         $param = rtrim($param,",");
         $param .= ');';
-//        echo $param;
+        //        echo $param;
         return eval($param);
     }
 
@@ -48,5 +47,17 @@ class Cache
     public function HmSet($keys,array $param)
     {
         return $this->redis->hmset($keys,$param);
+    }
+    public function sMembers($keys)
+    {
+        return $this->redis->smembers($keys);
+    }
+    public function rPop($keys)
+    {
+        return $this->redis->rpop($keys);
+    }
+    public function lPop($keys)
+    {
+        return $this->redis->lpop($keys);
     }
 }
